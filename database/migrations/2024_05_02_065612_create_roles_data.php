@@ -14,6 +14,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        $user = User::create([
+            'name' => 'Admin',
+            'surname' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('12345678'),
+        ]);
         $role1 = Role::create(['name' => 'admin']);
         $role2 = Role::create(['name' => 'alumno']);
         /* asignar rol a usuario  */ 
