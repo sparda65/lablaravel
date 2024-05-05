@@ -53,7 +53,8 @@ class PedidoController extends Controller
         foreach ($req->check_material as $material_id) {
             $material = Material::find($material_id);
             if($material->material_id && $material->material_disponibilidad == '0'){
-                 return redirect()->route('pedidoNuevo',['materiales' => $materiales])->with(
+                $materiales = Material::where('material_disponibilidad', '1')->get();
+                return redirect()->route('pedidoNuevo',['materiales' => $materiales])->with(
                     [
                         'messageError' => 'Error, los materiales no estan disponibles!!'
                     ]
