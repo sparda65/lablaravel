@@ -1,0 +1,1 @@
+<p>Buen dia, aqui esta el archivo PDF con la informacion de lo que has solicitado a traves de la plataforma, por favor presentalo al laboratorista</p>
