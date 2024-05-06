@@ -11,53 +11,55 @@
 @if(count($pedidos) == 0)
 No hay prestamos
 @else
+<div class="table-responsive">
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">Fecha Prestamo</th>
-            <th scope="col">Fecha Entrega</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($pedidos as $pedido)
+    <table class="table table-hover">
+        <thead>
             <tr>
-                <td>
-                    {{ $pedido->pedido_id }}
-                </td>
-                <td>
-                    {{ $pedido->pedido_fec_pre }}
-                </td>
-                <td>
-                    @if($pedido->pedido_fec_ent == null)
-                    <div>-</div>
-                    @else
-                    {{$pedido->pedido_fec_ent}}
-                    @endif
-                </td>
-                <td>
-                    @if($pedido->pedido_estado == '1')
-                    Pendiente
-                    @else
-                    Entregado
-                    @endif
-                </td>
-                <td>
-                    <a href="{{ route('pedidoDetalle', [ 'id'=>$pedido->pedido_id.'-'.$pedido->pedido_user_id ]) }}" class="btn btn-info">
-                        Detalle
-                    </a>
-                    @if($pedido->pedido_estado == '1')
-                    <a href="{{ route('pedidoEntregar', [ 'id'=>$pedido->pedido_id.'-'.$pedido->pedido_user_id ]) }}" class="btn btn-warning">
-                        Entregar
-                    </a>
-                    @endif
-                </td>
+                <th scope="col">id</th>
+                <th scope="col">Fecha Prestamo</th>
+                <th scope="col">Fecha Entrega</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
             </tr>
-        @endforeach
-        
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach($pedidos as $pedido)
+                <tr>
+                    <td>
+                        {{ $pedido->pedido_id }}
+                    </td>
+                    <td>
+                        {{ $pedido->pedido_fec_pre }}
+                    </td>
+                    <td>
+                        @if($pedido->pedido_fec_ent == null)
+                        <div>-</div>
+                        @else
+                        {{$pedido->pedido_fec_ent}}
+                        @endif
+                    </td>
+                    <td>
+                        @if($pedido->pedido_estado == '1')
+                        Pendiente
+                        @else
+                        Entregado
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('pedidoDetalle', [ 'id'=>$pedido->pedido_id.'-'.$pedido->pedido_user_id ]) }}" class="btn btn-info">
+                            Detalle
+                        </a>
+                        @if($pedido->pedido_estado == '1')
+                        <a href="{{ route('pedidoEntregar', [ 'id'=>$pedido->pedido_id.'-'.$pedido->pedido_user_id ]) }}" class="btn btn-warning">
+                            Entregar
+                        </a>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
+            
+        </tbody>
+    </table>
+</div>
 @endif
